@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Next level</title>
+    <style>
+        .ContainerWithBlueBorder {
+            border: 2px solid blue;
+            padding: 25px;
+            margin: 30px;
+        }
+
+        .Container {
+            padding: 25px;
+            margin: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // Your React code will go here
+
+
+
+        function User(props) {
+            return (
+                <div className="user">
+                    <h1>Name: {props.name}</h1>
+                    <h2>Age: {props.age}</h2>
+                    <h2>Email: {props.email}</h2>
+                </div>
+            );
+        }
+
+        function ScoreCard(props) {
+            return (
+                <div className="ScoreCard">
+                    <h2>Score: {props.score}</h2>
+                </div>
+            );
+        }
+
+        function ContainerWithBlueBorder(props) {
+            return (
+                <div className="ContainerWithBlueBorder">
+                    {props.children}
+                </div>
+            );
+        }
+
+        function Container(props) {
+            return (
+                <div className="Container" style={{ border: `2px solid ${props.borderColor}` }}>
+                    {props.children}
+                </div>
+            );
+        }
+
+        function App() {
+            return (
+                <div className="app">
+                    <Container borderColor="red">
+                        <User name="Paritosh Barman" age={23} email="barmanpari163@gmail.com" />
+                        <Container borderColor="black">
+                            <ScoreCard score={23} />
+                        </Container>
+                        <Container borderColor="blue">
+                            <p>Hi bro how are you I am fine!</p>
+                        </Container>
+                        <Container borderColor="skyblue">
+                            <Container borderColor="green">
+                                <h2>Hello React</h2>
+                                <Container borderColor="red">
+                                    <h2>Hi bro I am fine!</h2>
+                                </Container>
+                            </Container>
+                        </Container>
+                    </Container>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+</body>
+
+</html>

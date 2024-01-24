@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Component and Props Revision Problem 2</title>
+    <style>
+        .ContainerWithBlueBorder {
+            border: 2px solid blue;
+            padding: 25px;
+            margin: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // Your React code will go here
+
+
+
+        function User(props) {
+            return (
+                <div className="user">
+                    <h1>Name: {props.name}</h1>
+                    <h2>Age: {props.age}</h2>
+                    <h2>Email: {props.email}</h2>
+                </div>
+            );
+        }
+
+        function ScoreCard(props) {
+            return (
+                <div className="ScoreCard">
+                    <h2>Score: {props.score}</h2>
+                </div>
+            );
+        }
+
+        function ContainerWithBlueBorder(props) {
+            return (
+                <div className="ContainerWithBlueBorder">
+                    {props.children}
+                </div>
+            );
+        }
+
+
+        function App() {
+            return (
+                <div className="app">
+                    <ContainerWithBlueBorder>
+                        <User name="Paritosh Barman" age={23} email="barmanpari163@gmail.com" />
+                        <ContainerWithBlueBorder>
+                            <ScoreCard score={23} />
+                        </ContainerWithBlueBorder>
+                    </ContainerWithBlueBorder>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+</body>
+
+</html>
